@@ -21,6 +21,16 @@ int value;
 
 
 void setup() {
+
+//    delay( 3000 ); // power-up safety delay
+//    FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
+//    FastLED.setBrightness(  BRIGHTNESS );
+//    
+//    currentPalette = RainbowColors_p;
+//    currentBlending = LINEARBLEND;
+
+
+
     Serial.begin(9600);
     pinMode(potPin, INPUT); 
     delay( 3000 ); // power-up safety delay
@@ -35,12 +45,23 @@ void setup() {
 void loop()
 {
 
+// ChangePalettePeriodically();
+//    
+//    static uint8_t startIndex = 0;
+//    startIndex = startIndex + 1; /* motion speed */
+//    
+//    FillLEDsFromPaletteColors( startIndex);
+//    
+//    FastLED.show();
+//    FastLED.delay(1000 / UPDATES_PER_SECOND);
+
+
+
     
     FastLED.setBrightness((double(analogRead(potPin))/1023.0)*240);
 
     Serial.println((double(analogRead(potPin))/1023.0)*240);
-    
-    
+   
     
     
     static uint8_t startIndex = 0;
@@ -132,22 +153,14 @@ void SetupPurpleAndGreenPalette(){
 // takes up 64 bytes of flash.
 const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM =
 {
-    CRGB::Red,
-    CRGB::Gray, // 'white' is too bright compared to red and blue
-    CRGB::Blue,
-    CRGB::Black,
-    
-    CRGB::Red,
     CRGB::Gray,
-    CRGB::Blue,
-    CRGB::Black,
-    
-    CRGB::Red,
-    CRGB::Red,
     CRGB::Gray,
     CRGB::Gray,
     CRGB::Blue,
     CRGB::Blue,
-    CRGB::Black,
-    CRGB::Black
+    CRGB::Blue,
+    CRGB::Blue,
+    CRGB::Red,
+    CRGB::Red,
+    CRGB::Red
 };
